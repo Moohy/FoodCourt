@@ -1,0 +1,19 @@
+=form_with  model: restaurant do |f|
+
+    %div.feild
+        =f.label 'name'
+        =f.text_field :name
+
+    %div.feild
+        =f.label :description, "description"
+        =f.text_area :description
+
+    %div.feild
+        =f.label :user_id, "user id"
+        =f.text_field :user_id, value: current_user.id
+
+    %div.feild
+        
+
+    =f.submit 'submit'
+    

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_034815) do
+ActiveRecord::Schema.define(version: 2019_12_21_093528) do
+
+  create_table "branches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.string "city"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_branches_on_restaurant_id"
+  end
 
   create_table "menu_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "restaurant_id"
@@ -47,7 +56,6 @@ ActiveRecord::Schema.define(version: 2019_12_21_034815) do
     t.string "name"
     t.bigint "user_id"
     t.text "description"
-    t.string "adrress"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_restaurants_on_user_id"
@@ -70,4 +78,5 @@ ActiveRecord::Schema.define(version: 2019_12_21_034815) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "branches", "restaurants"
 end
