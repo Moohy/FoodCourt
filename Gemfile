@@ -38,6 +38,7 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap', '~> 4.4.1'
+gem 'tailwindcss', '~> 1.0.0'
 # gem 'tailwindcss', '~> 1.0.0'
 
 group :development, :test do

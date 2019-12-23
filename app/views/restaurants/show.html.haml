@@ -1,7 +1,7 @@
 =@restaurant.name
 =@restaurant.description
 -@restaurant.branches.each do |b|
-    = link_to "#{b.city}, #{b.address}", restaurant_branch_path(@restaurant, b)
+    = link_to "##{b.city}, #{b.address}", restaurant_branch_path(@restaurant, b)
 
 -if can? :update, @restaurant
     =link_to 'Edit', edit_restaurant_path(@restaurant)

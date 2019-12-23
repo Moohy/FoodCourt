@@ -1,10 +1,12 @@
-=simple_form_for  @branch, url: restaurant_branch_path(@restaurant, @branch), method: :put do |f|
+%div.pt-4.mb-8.center
+    =simple_form_for  @branch, url: restaurant_branch_path(@restaurant, @branch), method: :put do |f|
 
-    %div.feild
-        =f.input :city
+        %div.mb-6.flex
+            =f.input :city
 
-    %div.feild
-        =f.input :address
-
-    = f.submit 'submit'
+        %div.mb-6.flex
+            =f.input :address
+        .btn.rounded
+            = f.submit 'submit'
+%hr.border.mt-6
     

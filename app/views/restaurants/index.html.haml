@@ -1,23 +1,22 @@
-- @branches_by_cities.each do |city|
-    =link_to city, by_city_path(city)
-    -# - restaurants_by_city(b).each do |l|
-    -#     = link_to l.name, restaurant_path(l.id)
+%div.py-10.lg:py-8.px-4.flex.flex-wrap.items-center.justify-center
+    %div
+        - @branches_by_cities.each do |city|
+            %div.inline-block.bg-gray-300.hover:bg-gray-400.rounded-full.px-3.py-1.text-1xl.font-semibold.text-gray-700.mr-2
+                =link_to "##{city}", by_city_path(city)
+        -# - restaurants_by_city(b).each do |l|
+        -#     = link_to l.name, restaurant_path(l.id)
 
--# - (restaurants_by_city @brances_by_cities[0]).each do |c| 
--#     =link_to c.name, restaurant_path(c.id)
--# = (restaurants_by_city "Jeddah").each {|l| l }
+    -# - (restaurants_by_city @brances_by_cities[0]).each do |c| 
+    -#     =link_to c.name, restaurant_path(c.id)
+    -# = (restaurants_by_city "Jeddah").each {|l| l }
 
-%table.table
-    %tr
-        %th Name
-        %th Description
-
+%div.flex.flex-row-reverse.flex-wrap
     -@restaurants.each do |r|
-        %tr
-            %td 
+        %div.rounded-lg.overflow-hidden.shadow-lg.w-full.h-20.text-left.bg-white.mt-5.flex.items-center.m-auto
+            %img.w-16.h-16.rounded-full.mr-4.bg-gray-700.ml-2
+            %p
                 =r.name
-            %td 
                 =r.description
-
--if can? :create, Restaurant
-    =link_to 'new rest', new_restaurant_path
+%div.items-center.mb-12
+    -if can? :create, Restaurant
+        =link_to 'new rest', new_restaurant_path

@@ -25,3 +25,4 @@ import "cocoon-js";
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
+import "../css/application.css"
