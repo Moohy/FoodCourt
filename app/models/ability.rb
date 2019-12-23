@@ -14,8 +14,9 @@ class Ability
         can :manage, :dashboard    
       end
       if user.vendor?
-        can [:read, :update], Restaurant,  user: {id: user.id}
+        can [:read, :update], Restaurant,  user_id: user.id
         can :create, Restaurant if user.restaurant.nil?
+        can [:read, :update, :create], Branch, restaurant_id: user.restaurant.id
       end
       if user.customer?
         can :read, Restaurant

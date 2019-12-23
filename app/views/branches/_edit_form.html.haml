@@ -1,0 +1,10 @@
+=simple_form_for  @branch, url: restaurant_branch_path(@restaurant, @branch), method: :put do |f|
+
+    %div.feild
+        =f.input :city
+
+    %div.feild
+        =f.input :address
+
+    = f.submit 'submit'
+    

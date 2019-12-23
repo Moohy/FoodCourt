@@ -1,2 +1,23 @@
+- @branches_by_cities.each do |city|
+    =link_to city, by_city_path(city)
+    -# - restaurants_by_city(b).each do |l|
+    -#     = link_to l.name, restaurant_path(l.id)
+
+-# - (restaurants_by_city @brances_by_cities[0]).each do |c| 
+-#     =link_to c.name, restaurant_path(c.id)
+-# = (restaurants_by_city "Jeddah").each {|l| l }
+
+%table.table
+    %tr
+        %th Name
+        %th Description
+
+    -@restaurants.each do |r|
+        %tr
+            %td 
+                =r.name
+            %td 
+                =r.description
+
 -if can? :create, Restaurant
     =link_to 'new rest', new_restaurant_path

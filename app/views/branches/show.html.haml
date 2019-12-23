@@ -1,0 +1,9 @@
+=@restaurant.name
+=@branch.city
+=@branch.address
+=link_to "Place Order", new_restaurant_branch_order_path(@restaurant, @branch)
+-@menu_items.each do |m|
+    =m.name
+    = link_to "Add", new_restaurant_branch_order_order_line_path(@restaurant.id, @branch.id, @order.id) unless @order.nil?
+- if can? :update, @branch
+    = link_to 'Edit', edit_restaurant_branch_path

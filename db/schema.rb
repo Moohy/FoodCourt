@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_093528) do
+ActiveRecord::Schema.define(version: 2019_12_23_125247) do
 
   create_table "branches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "restaurant_id", null: false
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2019_12_21_093528) do
     t.string "ar_name"
     t.text "description"
     t.decimal "price", precision: 10
-    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_menu_items_on_restaurant_id"
@@ -49,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_12_21_093528) do
     t.decimal "total_price", precision: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "branch_id", null: false
+    t.index ["branch_id"], name: "index_orders_on_branch_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -79,4 +80,5 @@ ActiveRecord::Schema.define(version: 2019_12_21_093528) do
   end
 
   add_foreign_key "branches", "restaurants"
+  add_foreign_key "orders", "branches"
 end
