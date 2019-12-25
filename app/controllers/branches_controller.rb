@@ -15,7 +15,12 @@ class BranchesController < ApplicationController
         # order = Order.where("branch_id = ? and user_id = ? and total_price = 0", @branch.id, current_user.id)
         # p order
         # order.each {|o| puts o}
-        @order = Order.where("branch_id = ? and user_id = ? and total_price = 0", @branch.id, current_user.id).last# and Order.last.user_id == current_user.id and Order.last.total_price.nil?
+        
+        @order = Order.where("branch_id = ? and user_id = ?", @branch.id, current_user.id).last
+        if !@order
+          @order= Order.create(branch_id: @branch.id, user_id: current_user.id, total_price: 0)
+        end
+          # and Order.last.user_id == current_user.id and Order.last.total_price.nil?
         # end
       end
 

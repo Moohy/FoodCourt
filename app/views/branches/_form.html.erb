@@ -1,0 +1,9 @@
+<%= simple_form_for  @branch, url: restaurant_branches_path, method: :post do |f| %>
+  <div class="mb-6">
+    <%= f.input :city %>
+  </div>
+  <div class="mb-6">
+    <%= f.input :address %>
+  </div>
+  <%= f.submit 'submit' %>
+<% end %>

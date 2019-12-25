@@ -1,0 +1,8 @@
+
+$(document).ready(function() {
+  jQuery("#add-order a").hide().parent().append().html('<%= j render "order_lines/form", order_line: @order_line%>');
+})
+
+
+
+

@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :restaurant
+  has_one :restaurant#, -> {where vendor: true}
   has_many :orders
 end

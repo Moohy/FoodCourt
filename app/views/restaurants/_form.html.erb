@@ -1,0 +1,17 @@
+<%= simple_form_for  @restaurant do |f| %>
+  <div class="feild">
+    <%= f.input :name %>
+  </div>
+  <div class="feild">
+    <%= f.input :description %>
+  </div>
+  <div class="feild">
+    <%= f.simple_fields_for :branches do |b|        %>
+      <%= render 'branch_fields', f: b %>
+    <% end %>
+  </div>
+  <div class="links">
+    <%= link_to_add_association 'add branch', f, :branches %>
+  </div>
+  <%= f.submit 'submit' %>
+<% end %>

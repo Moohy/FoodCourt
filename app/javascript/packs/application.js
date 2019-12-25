@@ -11,6 +11,7 @@ global.toastr = require("toastr");
 import "../stylesheets/application";
 // require("src/cocoon");
 import "cocoon-js";
+// import("../../views/order_lines/new.js");
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -19,10 +20,87 @@ import "cocoon-js";
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-//= require jquery
-//= require jquery_ujs
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
+//= require jQuery
 //= require rails-ujs
-import "../css/application.css"
+//= require turbolinks
+//= require bootstrap
+//= require_tree .
+
+import "../css/application.css";
+
+const setup = () => {
+  console.log("satup");
+  //   $("#place-oerder")
+  //     .trigger()
+  //     .click();
+
+  var menu_id = [];
+  var order_id = [];
+  jQuery("#cards .card").each(function() {
+    menu_id.push(
+      $(this)
+        .get(0)
+        .id.split("-")[0]
+    );
+    order_id.push(
+      $(this)
+        .get(0)
+        .id.split("-")[1]
+    );
+  });
+
+  var counter = 0;
+  jQuery("input.menu_id").each(function() {
+    $(this).val(menu_id[counter]);
+    counter++;
+  });
+
+  jQuery("input.order_id").val(order_id[0]);
+};
+
+$(document).ready(function() {
+  //   $(".link-to-new-order")
+  //     .first()
+  //     .trigger("click");
+  //   setup();
+  $(".link-to-new-order")[0].click();
+  var quantity = 0;
+  var cart = 0;
+
+  //   $(".quantity_down").each(function() {
+  $(".quantity_down").click(function() {
+    quantity = $(this)
+      .next(".cart_quantity")
+      .html();
+    quantity--;
+    cart--;
+    $(this)
+      .next(".cart_quantity")
+      .text(quantity);
+    // let cart = $(this)
+    //   .next(".cart_quantity")
+    //   .html();
+    jQuery("input.cart_quantity").val(cart);
+  });
+
+  $(".quantity_up").click(function() {
+    // $(" .link-to-new-order").trigger("click");
+    quantity = $(this)
+      .prev(".cart_quantity")
+      .html();
+    quantity++;
+    cart++;
+    $(this)
+      .prev(".cart_quantity")
+      .text(quantity);
+    // let cart = $(this)
+    //   .prev(".cart_quantity")
+    //   .html();
+    jQuery("input.cart_quantity").val(cart);
+    setup();
+    // jQuery("input.menu_id").val(menu_id);
+  });
+  //   });
+
+  // $(".cart_quantity").val(quantity);
+});

@@ -1,0 +1,6 @@
+<%= simple_form_for @order_line,  url: restaurant_branch_order_order_lines_path, method: :post do |f| %>
+  <%= f.hidden_field :quantity, class: "cart_quantity" %>
+  <%= f.hidden_field :menu_item_id, class: "menu_id" %>
+  <%= f.hidden_field :order_id, class: "order_id" %>
+  <%= f.submit "Add", class: "px-6 py-4"%>
+<% end %>
