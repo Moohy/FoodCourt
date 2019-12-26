@@ -10,14 +10,19 @@ class OrdersController < ApplicationController
     end
 
     def show
-        if current_user.admin?
+        # if current_user.admin?
+        #     @order = Order.find(params[:id])
+        # elsif current_user.vendor?
+        #    if Branch.find(Order.find(params[:id]).branch_id).restaurant.user_id == current_user.id
+        #         @order = Order.find(params[:id])
+        #    end
+        # elsif current_user.customer?
+        #     @order = Order.where(user_id: current_user.id)
+        # else
+        #     redirect_to root_path, alert: "No order belong to you!"
+        # end
+        if can? :read, Order
             @order = Order.find(params[:id])
-        elsif current_user.vendor?
-           if Branch.find(Order.find(params[:id]).branch_id).restaurant.user_id == current_user.id
-                @order = Order.find(params[:id])
-           end
-        elsif current_user.customer?
-            @order = Order.where(user_id: current_user.id)
         else
             redirect_to root_path, alert: "No order belong to you!"
         end

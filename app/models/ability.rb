@@ -20,7 +20,8 @@ class Ability
       end
       if user.customer?
         can :read, Restaurant
-        can :create, Order
+        can :create, Order, user_id: user.id
+        can :read, Order, user_id: user.id
         can :create, OrderLine
         can :read, MenuItem
         can :delete, OrderLine
