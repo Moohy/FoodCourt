@@ -1,8 +1,8 @@
-# Connect4
+# FoodCourt
 
-A two-player connection game in which the players first choose a color and then take turns dropping one colored disc from the top into grid.
+A platform for ordering delicious meals.
 
-#### The Live Version of This Code → [FoodCourt](https://moohy.github.io/Connect4/index.html)
+#### The Live Version of This Code → [FoodCourt](https://secret-dusk-93056.herokuapp.com)
 
 ## Getting Started 🌟
 
@@ -40,4 +40,4 @@ Just upload the whole file into any hosting server with Postgres DB -> Bundle ->
 
 - Easy to Use Interface
 
-## [Connect4](https://moohy.github.io/Connect4/index.html)
+## [Connect4](https://secret-dusk-93056.herokuapp.com)
