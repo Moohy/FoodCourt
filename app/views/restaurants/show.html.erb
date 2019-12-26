@@ -1,0 +1,28 @@
+  <div class="font-thin text-center my-8 text-xl flex-1">
+  <p>
+    Choose Branch
+  </p>
+</div>
+<div class="w-1/4 flex flex-col flex-wrap  m-auto">
+  <% @restaurant.branches.each do |b| %>
+    <div class="rounded-lg overflow-hidden shadow-lg w-full h-24 text-left bg-white hover:bg-gray-200 mt-5 flex items-center m-auto">
+      <img class="w-16 h-16 rounded-full mr-4 bg-sp-mn ml-2"/>
+      <p class="text-lg text-gray-800">
+      <%= link_to "#{b.city}, #{b.address}", restaurant_branch_path(@restaurant, b)%>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<% if can? :create, Branch %>
+<div class="flex justify-center mt-24">
+<div class="flex flex-col justify-center h-24  my-3  mx-24  w-1/4 rounded-lg overflow-hidden shadow-lg m-4 bg-white card m-auto">
+  <div class="font-bold text-lg mb-1 flex-1 text-center text-red-800">
+    <p class="mt-4">
+      Admin Control
+    </p>
+  </div>
+    <%= link_to 'New Branch', new_restaurant_branch_path(@restaurant), class: "bg-gray-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded m-auto mt-2 mb-8" %>
+  </div>
+</div>
+<% end %>
