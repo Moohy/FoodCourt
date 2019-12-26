@@ -59,7 +59,7 @@ class OrderLinesController < ApplicationController
     end
   
     def destroy
-      if current_user.admin? or current_user == @order_line.user_id
+      if current_user.admin? or current_user.id == @order_line.order.user_id
           if @order_line.destroy
               # flash[:success] = 
               redirect_to restaurant_branch_path(@restaurant, @branch), notice: 'OrderLine was successfully deleted.'

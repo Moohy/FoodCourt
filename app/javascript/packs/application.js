@@ -73,6 +73,11 @@ $(document).ready(function() {
   //     .trigger("click");
   //   setup();
   $(".link-to-new-order")[0].click();
+  // $("#checked-out")[0].click(function() {
+  //   setTimeout(function() {
+  //     $(".link-to-new-order")[0].click();
+  //   }, 1000);
+  // });
   var quantity = 0;
   var cart = 0;
 

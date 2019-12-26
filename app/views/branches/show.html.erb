@@ -1,10 +1,11 @@
+  <%#= link_to "Start A New Order", new_restaurant_branch_order_path(@restaurant, @branch), id: "link-to-new-order", class: "invisible bg-gray-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded m-auto" %>
   <div class="font-thin text-center my-8 text-xl flex-1">
   <p>
     Menu Order
   </p>
 </div>
 <div class="flex flex-col">
-  <div class="container flex flex-wrap justify-center m-auto" id="cards">
+  <div class="container flex flex-wrap justify-center m-auto mb-8" id="cards">
     <% @menu_items.each do |m| %>
       <% # %div.rounded-lg.overflow-hidden.shadow-lg.w-full.h-20.text-left.bg-white.mt-5.flex.items-center.m-auto %>
       <% #     %img.w-16.h-16.rounded-full.mr-4.bg-gray-700.ml-3 %>
@@ -95,7 +96,7 @@
   
   <%if !@order.order_lines.empty?%>
     <%= link_to "Start A New Order", new_restaurant_branch_order_path(@restaurant, @branch), id: "place-oerder", class: "bg-gray-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded m-auto" %>
-    <%= link_to "Checkout", restaurant_branch_order_path(@restaurant, @branch, @order), class: "bg-gray-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded m-auto mt-2 mb-8" %>
+    <%= link_to "Checkout", restaurant_branch_order_path(@restaurant, @branch, @order), id: "checked-out", class: "bg-gray-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded m-auto mt-2 mb-8" %>
   <%end%>
 </div>
 <% if can? :update, @branch %>
