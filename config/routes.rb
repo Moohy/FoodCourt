@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users#, :skip => :registrations
   
   resources :restaurants do
-    
+    resources :menu_items
     resources :branches do
       resources :orders do
         resources :order_lines
