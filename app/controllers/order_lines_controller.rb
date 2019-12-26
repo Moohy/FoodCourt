@@ -17,22 +17,22 @@ class OrderLinesController < ApplicationController
     def create
       if can? :create, OrderLine
           price = {price: (order_line_params[:quantity].to_f * MenuItem.find(order_line_params[:menu_item_id]).price).to_f.as_json}
-          # h = {price: price}
+          
           param = order_line_params.merge price
           @order_line = OrderLine.new(param)
-          # @order_line.restaurant_id = params[:restaurant_id]
+          
           respond_to do |format|
               
           
             if @order_line.save
-              # @order_line.updatePrice(price[:price])
+              
                 format.js
-                # flash[:success] = "OrderLine successfully created"
+                
                 format.html {redirect_to restaurant_branch_path params[:restaurant_id], params[:branch_id], notice: "OrderLine was successfully created"}
 
             else
-                # flash[:error] = "Something went wrong"
-                # format.html {redirect_to new_restaurant_branch_order_order_line_path}
+                
+                
                 formaj.js
             end
           end
@@ -43,17 +43,17 @@ class OrderLinesController < ApplicationController
   
     def update
       if @order_line.update(order_line_params)
-          # flash[:success] = 
+          
           redirect_to restaurant_branch_order_order_line_path, notice: "OrderLine was successfully updated"
         else
-          # flash[:error] = "Something went wrong"
+          
           redirect_to edit_restaurant_branch_order_order_line_path, alert: "Something went wrong"
         end
     end
   
     def edit
       if !can? :edit, @order_line
-          # flash[:error] = "Something went wrong"
+          
           redirect_to restaurant_branch_order_order_line_path, alert: "Something went wrong"
       end
     end
@@ -61,10 +61,10 @@ class OrderLinesController < ApplicationController
     def destroy
       if current_user.admin? or current_user.id == @order_line.order.user_id
           if @order_line.destroy
-              # flash[:success] = 
+              
               redirect_to restaurant_branch_path(@restaurant, @branch), notice: 'OrderLine was successfully deleted.'
           else
-              # flash[:error] = 'Something went wrong'
+              
               redirect_to restaurant_branch_path(@restaurant, @branch), alert: "Something went wrong"
           end
       else
@@ -73,7 +73,7 @@ class OrderLinesController < ApplicationController
     end
 
     private
-    # Use callbacks to share common setup or constraints between actions.
+    
         def set_order_line
           puts params[:order_id]
           @restaurant = Restaurant.find(params[:restaurant_id])

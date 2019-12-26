@@ -1,4 +1,4 @@
-<%# <div class="w-1/4 m-auto shadow-lg m-4 p-4 bg-white flex justify-center card mt-8"> %>
+
 <%= simple_form_for @order_line,  url: restaurant_branch_order_order_lines_path, method: :post do |f| %>
  <div class="text-gray-700">
   <%= f.hidden_field :quantity, class: "cart_quantity mb-4 border form-input mt-1 block w-64  text-gray-600" %>
@@ -11,4 +11,3 @@
   </div>
   <%= f.submit "Add", class: "bg-sp-mn hover:bg-sp-sc text-white  font-bold py-2 px-4 rounded m-auto w-full"%>
 <% end %>
-<%# </div> %>

@@ -30,10 +30,10 @@ class RestaurantsController < ApplicationController
             @restaurant.user_id = current_user.id
             
             if @restaurant.save
-                # flash[:success] = 
+                
                 redirect_to @restaurant, notice: "Restaurant successfully created"
             else
-                # flash[:error] = "Something went wrong"
+                
                 redirect_to new_restaurant_path, alert: "Something went wrong"
             end
         else
@@ -43,7 +43,7 @@ class RestaurantsController < ApplicationController
 
     def edit
         if !can? :update, @restaurant
-            # flash[:error] = "Something went wrong"
+            
             redirect_to @restaurant, alert: "Something went wrong"
         end
     end
@@ -51,10 +51,10 @@ class RestaurantsController < ApplicationController
 
     def update
         if @restaurant.update(restaurant_params)
-        #   flash[:success] = 
+        
           redirect_to @restaurant, notice: "Restaurant was successfully updated"
         else
-        #   flash[:error] = "Something went wrong"
+        
           redirect_to edit_restaurant_path, alert: "Something went wrong"
         end
     end
@@ -66,15 +66,15 @@ class RestaurantsController < ApplicationController
                 flash[:success] = 'Restaurant was successfully deleted.'
                 redirect_to @restaurant, notice: 'Restaurant was successfully deleted.'
             else
-                # flash[:error] = 'Something went wrong'
-                # redirect_to @restaurant
+                
+                
             end
         else
             flash[:error] = "No permission!"
         end
     end
     private
-    # Use callbacks to share common setup or constraints between actions.
+    
         def set_appointment
         @restaurant = Restaurant.find(params[:id])
         end

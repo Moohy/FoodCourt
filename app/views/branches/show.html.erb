@@ -7,12 +7,8 @@
 <div class="flex flex-col">
   <div class="container flex flex-wrap justify-center m-auto mb-8" id="cards">
     <% @menu_items.each do |m| %>
-      <% # %div.rounded-lg.overflow-hidden.shadow-lg.w-full.h-20.text-left.bg-white.mt-5.flex.items-center.m-auto %>
-      <% #     %img.w-16.h-16.rounded-full.mr-4.bg-gray-700.ml-3 %>
       <div class="lg:w-1/6 sm:w-1/2 xl:1/6 rounded-lg overflow-hidden shadow-lg m-3 bg-white card" id="<%= "#{m.id}-#{@order.id}" %>">
-        <%# <img class="w-full"> %>
-          <%= image_tag "burger.jpg" %>
-        <%# </img> %>
+        <%= image_tag "burger.jpg" %>
         <div class="px-6 py-4 flex flex-col items-stretch flex-wrap jusrify-end">
           <div class="font-bold text-lg mb-1 flex-1">
             <p>
@@ -41,9 +37,9 @@
           </div>
         </div>
         <div class="w-full px-6 py-4" id="add-order">
-          <% # = render "order_lines/form", order_line: @order_line %>
+          
           <%= link_to "Add", new_restaurant_branch_order_order_line_path(@restaurant.id, @branch.id, @order.id, params[:quantity]) , remote: true, class: "link-to-new-order w-full" %>
-          <% # = j ren?der "order_lines/form", order_line: @order_line, restaurant: @restaurant.id, branch: @branch.id, order: @order.id, quantity:params[:quantity] %>
+          
         </div>
         <div id="orders"></div>
       </div>
@@ -71,13 +67,11 @@
             <tbody>
             <%@order.order_lines.each do |o|%>
             <tr>
-            <%# <p class="text-right"> %>
             
               <td class=" px-4 py-2"> <%= o.menu_item.name %> </td>
               <td class=" px-4 py-2"> <%= o.quantity %> </td>
               <td class=" px-4 py-2"> <%= o.price %> </td>
               <td class=" px-4 py-2"> <%= link_to "X", restaurant_branch_order_order_line_path(@restaurant, @branch, o.order, o), method: :delete, class: "text-white quantity_up bg-red-600 w-4 h-4 rounded-full hover:bg-red-800 self-center"%>
-            <%# </p> %>
             </tr>
             <%end%>
             </tbody>
@@ -86,9 +80,7 @@
             <span class="text-gray-800"> Total Price: <%= @order.total_price%><span>
             
           </p>
-          <%# <button class="" > %>
-              
-          
+ 
       </div>
   </div>
 
@@ -108,7 +100,6 @@
     </p>
   </div>
     <%= link_to 'Edit Branch', edit_restaurant_branch_path, class: "bg-gray-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded m-auto mt-2 mb-8" %>
-    <%#= link_to 'Add Menu Item', new_restaurant_branch_order_order_line_path, class: "bg-gray-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded m-auto mt-2 mb-8" %>
   </div>
 </div>
 <% end %>

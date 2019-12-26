@@ -28,13 +28,11 @@
             
             <% order.order_lines.each do |o|%>
                 <tr>
-                <%# <p class="text-right"> %>
                 
                 <td class=" px-4 py-2"> <%= o.menu_item.name %> </td>
                 <td class=" px-4 py-2"> <%= o.quantity %> </td>
                 <td class=" px-4 py-2"> <%= o.price %> </td>
-                
-                <%# </p> %>
+              
                 </tr>
                 <%end%>
                 </tbody>
@@ -43,9 +41,7 @@
                 <span class="text-gray-800"> Total Price: <%= order.total_price%><span>
                 
             </p>
-          <%# <button class="" > %>
-              
-          
+
       </div>
   </div>
   <%end%>

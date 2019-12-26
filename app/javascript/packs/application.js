@@ -68,20 +68,12 @@ $("#alert").fadeOut(3000);
 
 $(document).ready(function() {
   setup();
-  //   $(".link-to-new-order")
-  //     .first()
-  //     .trigger("click");
-  //   setup();
+
   $(".link-to-new-order")[0].click();
-  // $("#checked-out")[0].click(function() {
-  //   setTimeout(function() {
-  //     $(".link-to-new-order")[0].click();
-  //   }, 1000);
-  // });
+
   var quantity = 0;
   var cart = 0;
 
-  //   $(".quantity_down").each(function() {
   $(".quantity_down").click(function() {
     quantity = $(this)
       .next(".cart_quantity")
@@ -95,14 +87,11 @@ $(document).ready(function() {
     $(this)
       .next(".cart_quantity")
       .text(quantity);
-    // let cart = $(this)
-    //   .next(".cart_quantity")
-    //   .html();
+
     jQuery("input.cart_quantity").val(cart);
   });
 
   $(".quantity_up").click(function() {
-    // $(" .link-to-new-order").trigger("click");
     quantity = $(this)
       .prev(".cart_quantity")
       .html();
@@ -111,14 +100,8 @@ $(document).ready(function() {
     $(this)
       .prev(".cart_quantity")
       .text(quantity);
-    // let cart = $(this)
-    //   .prev(".cart_quantity")
-    //   .html();
+
     jQuery("input.cart_quantity").val(cart);
     setup();
-    // jQuery("input.menu_id").val(menu_id);
   });
-  //   });
-
-  // $(".cart_quantity").val(quantity);
 });

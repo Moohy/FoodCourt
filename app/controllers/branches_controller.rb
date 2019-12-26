@@ -9,19 +9,16 @@ class BranchesController < ApplicationController
       end
     
       def show
-        @menu_items = @restaurant.menu_items
-        # @order 
-        # if request.referer =~ /orders/
-        # order = Order.where("branch_id = ? and user_id = ? and total_price = 0", @branch.id, current_user.id)
-        # p order
-        # order.each {|o| puts o}
-        
-        @order = Order.where("branch_id = ? and user_id = ?", @branch.id, current_user.id).last
-        if !@order
-          @order= Order.create(branch_id: @branch.id, user_id: current_user.id, total_price: 0)
+        if (!current_user)
+          redirect_to(root_path, alert: "Login to Order or view")
+        else
+          @menu_items = @restaurant.menu_items
+          @order = Order.where("branch_id = ? and user_id = ?", @branch.id, current_user.id).last
+          if !@order
+            @order= Order.create(branch_id: @branch.id, user_id: current_user.id, total_price: 0)
+          end
         end
-          # and Order.last.user_id == current_user.id and Order.last.total_price.nil?
-        # end
+
       end
 
       def new
@@ -35,12 +32,11 @@ class BranchesController < ApplicationController
             @branch = Branch.new(branch_params)
             @branch.restaurant_id = params[:restaurant_id]
             if @branch.save
-                # @restaurant << @branch
-                # flash[:success] = 
+
                 redirect_to restaurant_branch_path, notice: "Branch successfully created"
 
             else
-                # flash[:error] = "Something went wrong"
+                
                 redirect_to new_restaurant_branch_path, alert: "Something went wrong"
             end
         else
@@ -50,17 +46,17 @@ class BranchesController < ApplicationController
     
       def update
         if @branch.update(branch_params)
-            # flash[:success] = 
+            
             redirect_to restaurant_branch_path, notice: "Branch was successfully updated"
           else
-            # flash[:error] = 
+            
             redirect_to edit_restaurant_branch_path, alert: "Something went wrong"
           end
       end
     
       def edit
         if !can? :edit, @branch
-            # flash[:error] = "Something went wrong"
+            
             redirect_to restaurant_branch_path, alert: "Something went wrong"
         end
       end
@@ -68,10 +64,10 @@ class BranchesController < ApplicationController
       def destroy
         if current_user.admin?
             if @branch.destroy
-                # flash[:success] = 
+                
                 redirect_to restaurant_branch_path, notice: 'Branch was successfully deleted.'
             else
-                # flash[:error] = 'Something went wrong'
+                
                 redirect_to restaurant_branch_path, alert: "Something went wrong"
             end
         else
@@ -85,7 +81,7 @@ class BranchesController < ApplicationController
             puts params[:restaurant_id]
             @restaurant = Restaurant.find(params[:restaurant_id])
             @branch = @restaurant.branches.find(params[:id])
-            # @branch = Branch.find(params[:id])
+            
           end
   
           def branch_params
