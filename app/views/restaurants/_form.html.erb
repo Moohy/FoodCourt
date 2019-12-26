@@ -1,17 +1,19 @@
+<div class="w-1/4 my-8 m-auto shadow-lg m-4 p-4 bg-white flex justify-center card mt-8">
 <%= simple_form_for  @restaurant do |f| %>
-  <div class="feild">
-    <%= f.input :name %>
+  <div class="text-gray-700">
+    <%= f.input :name, input_html:{class:  "mb-4 border form-input mt-1 block w-64  text-gray-600"} %>
   </div>
-  <div class="feild">
-    <%= f.input :description %>
+  <div class="text-gray-700">
+    <%= f.input :description, input_html:{class:  "mb-4 border form-input mt-1 block w-64  text-gray-600"} %>
   </div>
-  <div class="feild">
+  <div class="text-gray-700">
     <%= f.simple_fields_for :branches do |b|        %>
       <%= render 'branch_fields', f: b %>
     <% end %>
   </div>
   <div class="links">
-    <%= link_to_add_association 'add branch', f, :branches %>
+    <%= link_to_add_association 'add branch', f, :branches, class:  "bg-sp-mn mt-8 hover:bg-sp-sc text-white  font-bold py-2 px-4 rounded m-auto w-full mb-2" %>
   </div>
-  <%= f.submit 'submit' %>
+  <%= f.submit 'Submit', class: "  bg-sp-mn hover:bg-sp-sc text-white  font-bold py-2 px-4 mt-4 rounded m-auto w-full" %>
 <% end %>
+</div>

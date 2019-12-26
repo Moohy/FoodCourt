@@ -1,8 +1,8 @@
 module RestaurantsHelper
-    # def restaurants_by_city city
+    def cities city
         
-    #     # links = []
-    #     # @restaurants_cities.each {|r| links << (link_to r.name, restaurant_path(r.id))}
-    #     # links
-    # end
+        # links = []
+        @cities = Branch.joins(:restaurant).select(:city).where(restaurants: {name: city})
+        # links
+    end
 end

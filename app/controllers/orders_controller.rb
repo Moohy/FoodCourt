@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+    before_action :set_order, only: [:show, :edit, :update, :destroy]
 
     def index
         @orders = Order.all
@@ -10,6 +10,17 @@ class OrdersController < ApplicationController
     end
 
     def show
+        if current_user.admin?
+            @order = Order.find(params[:id])
+        elsif current_user.vendor?
+           if Branch.find(Order.find(params[:id]).branch_id).restaurant.user_id == current_user.id
+                @order = Order.find(params[:id])
+           end
+        elsif current_user.customer?
+            @order = Order.where(user_id: current_user.id)
+        else
+            redirect_to root_path, alert: "No order belong to you!"
+        end
     end
 
     def new
@@ -28,11 +39,11 @@ class OrdersController < ApplicationController
             # @order.user_id = current_user.id
             
             if @order.save
-                flash[:success] = "Order successfully created"
-                redirect_to restaurant_branch_path(params[:restaurant_id], params[:branch_id])
+                # flash[:success] = 
+                redirect_to restaurant_branch_path(params[:restaurant_id], params[:branch_id]), notice: "Order successfully created"
             else
-                flash[:error] = "Something went wrong"
-                redirect_to new_restaurant_branch_order_path
+                # flash[:error] = "Something went wrong"
+                redirect_to new_restaurant_branch_order_path, alert: "Something went wrong"
             end
         else
             flash[:error] = "No permission!"
@@ -41,19 +52,19 @@ class OrdersController < ApplicationController
 
     def edit
         if !can? :update, @order
-            flash[:error] = "Something went wrong"
-            redirect_to restaurant_branch_path(params[:branch_id])
+            # flash[:error] = "Something went wrong"
+            redirect_to restaurant_branch_path(params[:branch_id]), alert: "Something went wrong"
         end
     end
     
 
     def update
         if @order.update(order_params)
-          flash[:success] = "Order was successfully updated"
-          redirect_to restaurant_branch_path(params[:branch_id])
+        #   flash[:success] = 
+          redirect_to restaurant_branch_path(params[:branch_id]), notice: "Order was successfully updated"
         else
-          flash[:error] = "Something went wrong"
-          redirect_to edit_restaurant_branch_order_path
+        #   flash[:error] = "Something went wrong"
+          redirect_to edit_restaurant_branch_order_path, alert: "Something went wrong"
         end
     end
     
@@ -61,11 +72,11 @@ class OrdersController < ApplicationController
     def destroy
         if current_user.admin?
             if @order.destroy
-                flash[:success] = 'Order was successfully deleted.'
-                redirect_to restaurant_branch_path(params[:branch_id])
+                # flash[:success] = 
+                redirect_to restaurant_branch_path(params[:branch_id]), notice: 'Order was successfully deleted.'
             else
-                flash[:error] = 'Something went wrong'
-                redirect_to restaurant_branch_path(params[:branch_id])
+                # flash[:error] = 'Something went wrong'
+                redirect_to restaurant_branch_path(params[:branch_id]), alert: "Something went wrong"
             end
         else
             flash[:error] = "No permission!"
@@ -73,7 +84,9 @@ class OrdersController < ApplicationController
     end
     private
     # Use callbacks to share common setup or constraints between actions.
-        def set_appointment
+        def set_order
+            @restaurant = Restaurant.find(params[:restaurant_id])
+            @branch = Branch.find(params[:branch_id])
             @order = Order.find(params[:id])
         end
 

@@ -1,0 +1,21 @@
+<div class="bg-sp-mn">
+    <nav class="font-sans  text-center flex justify-between py-4 mx-auto container overflow-hidden">
+    <p class="block text-left  text-white w-1/2" style="font-family: 'Gill Sans';font-weight: 500; font-size: 20px;letter-spacing: 3px;">
+      Food Court
+    </p>
+    <ul class="text-sm text-white list-none p-0 flex items-center">
+        <li><%= link_to 'Restaurants', restaurants_path, class:"inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
+        <%if !current_user%>
+            <li class="pl-2 border-l"><%= link_to 'Log In', new_user_session_path, class:"inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
+            <button class="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3">
+            <%= link_to 'Sign Up', new_user_registration_path%>
+            </button>
+        <%else%>
+            <li class="pl-2 border-l"><%= link_to 'Log Out', destroy_user_session_path, method: :delete, class:"inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
+            <%if current_user.admin?%>
+                <li><%= link_to 'Dashboard', rails_admin_path, class:"bg-transparent border border-white hover:bg-text-gray-800 text-white ml-4 py-2 px-3 inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
+            <%end%>
+        <%end%>
+    </ul>
+    </nav>
+</div>

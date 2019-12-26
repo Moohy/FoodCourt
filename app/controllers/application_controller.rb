@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
     # helper_method :current_user
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     def index
-        @user = current_user
+        # @user = current_user
 
     end
 

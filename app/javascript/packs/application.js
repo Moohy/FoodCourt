@@ -57,8 +57,17 @@ const setup = () => {
 
   jQuery("input.order_id").val(order_id[0]);
 };
+setTimeout(function() {
+  $("#alert").slideUp(500);
+}, 1000);
+setTimeout(function() {
+  $("#notice").slideUp(500);
+}, 1000);
+
+$("#alert").fadeOut(3000);
 
 $(document).ready(function() {
+  setup();
   //   $(".link-to-new-order")
   //     .first()
   //     .trigger("click");
@@ -74,6 +83,10 @@ $(document).ready(function() {
       .html();
     quantity--;
     cart--;
+    if (quantity < 0 || cart < 0) {
+      cart = 0;
+      quantity = 0;
+    }
     $(this)
       .next(".cart_quantity")
       .text(quantity);

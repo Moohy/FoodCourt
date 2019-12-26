@@ -36,43 +36,43 @@ class BranchesController < ApplicationController
             @branch.restaurant_id = params[:restaurant_id]
             if @branch.save
                 # @restaurant << @branch
-                flash[:success] = "Branch successfully created"
-                redirect_to restaurant_branch_path
+                # flash[:success] = 
+                redirect_to restaurant_branch_path, notice: "Branch successfully created"
 
             else
-                flash[:error] = "Something went wrong"
-                redirect_to new_restaurant_branch_path
+                # flash[:error] = "Something went wrong"
+                redirect_to new_restaurant_branch_path, alert: "Something went wrong"
             end
         else
-            flash[:error] = "No permission!"
+          redirect_to edit_restaurant_branch_path, alert: "Something went wrong"
         end
       end
     
       def update
         if @branch.update(branch_params)
-            flash[:success] = "Branch was successfully updated"
-            redirect_to restaurant_branch_path
+            # flash[:success] = 
+            redirect_to restaurant_branch_path, notice: "Branch was successfully updated"
           else
-            flash[:error] = "Something went wrong"
-            redirect_to edit_restaurant_branch_path
+            # flash[:error] = 
+            redirect_to edit_restaurant_branch_path, alert: "Something went wrong"
           end
       end
     
       def edit
         if !can? :edit, @branch
-            flash[:error] = "Something went wrong"
-            redirect_to restaurant_branch_path
+            # flash[:error] = "Something went wrong"
+            redirect_to restaurant_branch_path, alert: "Something went wrong"
         end
       end
     
       def destroy
         if current_user.admin?
             if @branch.destroy
-                flash[:success] = 'Branch was successfully deleted.'
-                redirect_to restaurant_branch_path
+                # flash[:success] = 
+                redirect_to restaurant_branch_path, notice: 'Branch was successfully deleted.'
             else
-                flash[:error] = 'Something went wrong'
-                redirect_to restaurant_branch_path
+                # flash[:error] = 'Something went wrong'
+                redirect_to restaurant_branch_path, alert: "Something went wrong"
             end
         else
             flash[:error] = "No permission!"

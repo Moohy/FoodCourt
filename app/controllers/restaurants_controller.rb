@@ -30,11 +30,11 @@ class RestaurantsController < ApplicationController
             @restaurant.user_id = current_user.id
             
             if @restaurant.save
-                flash[:success] = "Restaurant successfully created"
-                redirect_to @restaurant
+                # flash[:success] = 
+                redirect_to @restaurant, notice: "Restaurant successfully created"
             else
-                flash[:error] = "Something went wrong"
-                redirect_to new_restaurant_path
+                # flash[:error] = "Something went wrong"
+                redirect_to new_restaurant_path, alert: "Something went wrong"
             end
         else
             flash[:error] = "No permission!"
@@ -43,19 +43,19 @@ class RestaurantsController < ApplicationController
 
     def edit
         if !can? :update, @restaurant
-            flash[:error] = "Something went wrong"
-            redirect_to @restaurant
+            # flash[:error] = "Something went wrong"
+            redirect_to @restaurant, alert: "Something went wrong"
         end
     end
     
 
     def update
         if @restaurant.update(restaurant_params)
-          flash[:success] = "Restaurant was successfully updated"
-          redirect_to @restaurant
+        #   flash[:success] = 
+          redirect_to @restaurant, notice: "Restaurant was successfully updated"
         else
-          flash[:error] = "Something went wrong"
-          redirect_to edit_restaurant_path
+        #   flash[:error] = "Something went wrong"
+          redirect_to edit_restaurant_path, alert: "Something went wrong"
         end
     end
     
@@ -64,10 +64,10 @@ class RestaurantsController < ApplicationController
         if current_user.admin?
             if @restaurant.destroy
                 flash[:success] = 'Restaurant was successfully deleted.'
-                redirect_to @restaurant
+                redirect_to @restaurant, notice: 'Restaurant was successfully deleted.'
             else
-                flash[:error] = 'Something went wrong'
-                redirect_to @restaurant
+                # flash[:error] = 'Something went wrong'
+                # redirect_to @restaurant
             end
         else
             flash[:error] = "No permission!"

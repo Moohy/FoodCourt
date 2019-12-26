@@ -1,9 +1,11 @@
+<div class="w-1/4 my-8 m-auto shadow-lg m-4 p-4 bg-white flex justify-center card mt-8">
 <%= simple_form_for  @branch, url: restaurant_branches_path, method: :post do |f| %>
-  <div class="mb-6">
-    <%= f.input :city %>
+  <div class="text-gray-700">
+    <%= f.input :city, input_html:{class:  "mb-4 border form-input mt-1 block w-64  text-gray-600"} %>
   </div>
-  <div class="mb-6">
-    <%= f.input :address %>
+  <div class="text-gray-700">
+    <%= f.input :address, input_html:{class:  "mb-4 border form-input mt-1 block w-64  text-gray-600"} %>
   </div>
-  <%= f.submit 'submit' %>
+  <%= f.submit 'submit', class: "  bg-sp-mn hover:bg-sp-sc text-white  font-bold py-2 px-4 rounded m-auto w-full"  %>
 <% end %>
+</div>

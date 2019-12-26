@@ -28,7 +28,7 @@ class OrderLinesController < ApplicationController
               # @order_line.updatePrice(price[:price])
                 format.js
                 # flash[:success] = "OrderLine successfully created"
-                format.html {redirect_to restaurant_branch_path params[:restaurant_id], params[:branch_id]}
+                format.html {redirect_to restaurant_branch_path params[:restaurant_id], params[:branch_id], notice: "OrderLine was successfully created"}
 
             else
                 # flash[:error] = "Something went wrong"
@@ -43,30 +43,29 @@ class OrderLinesController < ApplicationController
   
     def update
       if @order_line.update(order_line_params)
-          flash[:success] = "OrderLine was successfully updated"
-          redirect_to restaurant_branch_order_order_line_path
+          # flash[:success] = 
+          redirect_to restaurant_branch_order_order_line_path, notice: "OrderLine was successfully updated"
         else
-          flash[:error] = "Something went wrong"
-          redirect_to edit_restaurant_branch_order_order_line_path
+          # flash[:error] = "Something went wrong"
+          redirect_to edit_restaurant_branch_order_order_line_path, alert: "Something went wrong"
         end
     end
   
     def edit
       if !can? :edit, @order_line
-          flash[:error] = "Something went wrong"
-          redirect_to restaurant_branch_order_order_line_path
+          # flash[:error] = "Something went wrong"
+          redirect_to restaurant_branch_order_order_line_path, alert: "Something went wrong"
       end
     end
   
     def destroy
-      if current_user.admin?
+      if current_user.admin? or current_user == @order_line.user_id
           if @order_line.destroy
-              flash[:success] = 'OrderLine was successfully deleted.'
-              @order.updateTotal()
-              redirect_to restaurant_branch_order_order_line_path
+              # flash[:success] = 
+              redirect_to restaurant_branch_path(@restaurant, @branch), notice: 'OrderLine was successfully deleted.'
           else
-              flash[:error] = 'Something went wrong'
-              redirect_to restaurant_branch_order_order_line_path
+              # flash[:error] = 'Something went wrong'
+              redirect_to restaurant_branch_path(@restaurant, @branch), alert: "Something went wrong"
           end
       else
           flash[:error] = "No permission!"
@@ -80,7 +79,7 @@ class OrderLinesController < ApplicationController
           @restaurant = Restaurant.find(params[:restaurant_id])
           @branch = Branch.find(params[:branch_id])
           @order = Order.find(params[:order_id])
-          @order_line = @order.order_linees.find(params[:id])
+          @order_line = @order.order_lines.find(params[:id])
         end
 
         def order_line_params

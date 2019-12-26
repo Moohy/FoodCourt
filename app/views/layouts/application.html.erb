@@ -12,16 +12,28 @@
      <%# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> %>
   </head>
 
-  <body class="bg-gray-100">
-  <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-             <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-    <div class="">
-      <div class="max-w-6xl m-auto">
-        <%= yield %>
+  <body>
+  
+  
+  <% flash.each do |type, message| %>
+    <% if type == "alert" %>
+      <div class="bg-red-500" id="alert">
+        <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans"><%= message %></div>
       </div>
-    </div>
+    <% end %>
+    <% if type == "notice" %>
+      <div class="bg-green-500" id="notice">
+        <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans"><%= message %></div>
+      </div>
+    <% end %>
+  <% end %>
+  <%= render 'layouts/nav'%>
+
+
+
+        <%= yield %>
+
+
+    <%= render 'layouts/footer'%>
   </body>
 </html>

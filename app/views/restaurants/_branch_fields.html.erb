@@ -1,5 +1,9 @@
 <div class="nested-fields">
-  <%= f.input :city  %>
-  <%= f.input :address  %>
-  <%= link_to_remove_association "remove branch", f %>
+<div class="text-gray-700">
+  <%= f.input :city, input_html:{class:  "mb-4 border form-input mt-1 block w-64  text-gray-600"}  %>
+  </div>
+  <div class="text-gray-700">
+  <%= f.input :address, input_html:{class:  "mb-4 border form-input mt-1 block w-64  text-gray-600"}  %>
+ </div>
+  <%= link_to_remove_association "remove branch", f , class: " mb-8 bg-sp-mn hover:bg-sp-sc text-white  font-bold py-2 px-4 rounded m-auto w-full"%>
 </div>

@@ -1,3 +1,16 @@
-<% @restaurants_cities.each do |r| %>
-  <%= link_to r.name, restaurant_path(r) %>
-<% end %>
+<div class="font-thin text-center my-6 text-xl flex-1">
+  <p>
+    Choose Restaurant
+  </p>
+</div>
+
+<div class="w-1/4 flex flex-col flex-wrap  m-auto my-8">
+  <% @restaurants_cities.each do |r| %>
+    <div class="rounded-lg overflow-hidden shadow-lg w-full h-24 text-left bg-white hover:bg-gray-200 mt-5 flex items-center m-auto">
+      <img class="w-16 h-16 rounded-full mr-4 bg-sp-mn ml-2"/>
+      <p class="text-lg text-gray-800">
+      <%= link_to "#{r.name}", restaurant_branches_path(r)%>
+      </p>
+    </div>
+  <% end %>
+</div>

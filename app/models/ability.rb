@@ -23,6 +23,7 @@ class Ability
         can :create, Order
         can :create, OrderLine
         can :read, MenuItem
+        can :delete, OrderLine
       end
       
     #
