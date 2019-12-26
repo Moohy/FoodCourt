@@ -28,7 +28,7 @@ Just upload the whole file into any hosting server with Postgres DB -> Bundle ->
 - [Html]() - Front-end
 - [Css]() - Front-end
 
-## Models
+## Models 📝
 ![Models](/models.png)
 
 ## Something Worth Looking in The Code ✨
@@ -40,4 +40,4 @@ Just upload the whole file into any hosting server with Postgres DB -> Bundle ->
 
 - Easy to Use Interface
 
-## [Connect4](https://secret-dusk-93056.herokuapp.com)
+## [FoodCourt](https://secret-dusk-93056.herokuapp.com)
