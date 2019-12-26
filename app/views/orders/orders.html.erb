@@ -1,0 +1,51 @@
+  <div class="font-thin text-center my-8 text-xl flex-1">
+  <p>
+    Your Orders
+  </p>
+</div>
+
+<% @orders.each do |order|%>
+<div class="flex  mb-3 justify-around mx-24 " id="cards">
+      <div class="w-3/4 rounded-lg overflow-hidden shadow-lg m-4 bg-white card">
+          <div class="font-bold text-lg mb-1 flex-1 text-center">
+            <p class="mt-4">
+              Order
+            </p>
+            <p class="mt-2">
+              Order Number: <span><%=order.id%></span>
+            </p>
+          </div>
+          <table class="table-fixed w-3/5 text-left m-auto text-gray-700">
+            <thead>
+            <tr>
+              <th class="w-1/2 px-4 py-2 text-gray-800">Items</th>
+              <th class="w-1/5 px-4 py-2 text-gray-800">Quantity</th>
+              <th class="w-1/6 px-4 py-2 text-gray-800">Price</th>
+              <th class="w-1/6 px-4 py-2 text-gray-800"></th>
+              </tr>
+            </thead>
+            <tbody>
+            
+            <% order.order_lines.each do |o|%>
+                <tr>
+                <%# <p class="text-right"> %>
+                
+                <td class=" px-4 py-2"> <%= o.menu_item.name %> </td>
+                <td class=" px-4 py-2"> <%= o.quantity %> </td>
+                <td class=" px-4 py-2"> <%= o.price %> </td>
+                
+                <%# </p> %>
+                </tr>
+                <%end%>
+                </tbody>
+            </table>
+            <p class="text-center m-auto mt-8 mb-4">
+                <span class="text-gray-800"> Total Price: <%= order.total_price%><span>
+                
+            </p>
+          <%# <button class="" > %>
+              
+          
+      </div>
+  </div>
+  <%end%>

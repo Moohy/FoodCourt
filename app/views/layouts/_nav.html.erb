@@ -13,6 +13,7 @@
             </button>
         <%else%>
             <li class="pl-2 border-l"><%= link_to 'Log Out', destroy_user_session_path, method: :delete, class:"inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
+            <li><%= link_to 'Your Orders', orders_path, class:"inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
             <%if current_user.admin?%>
                 <li><%= link_to 'Dashboard', rails_admin_path, class:"bg-transparent border border-white hover:bg-text-gray-800 text-white ml-4 py-2 px-3 inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
             <%end%>

@@ -7,8 +7,9 @@
     <div class="flex flex-col w-full lg:w-1/2 justify-center  py-8">
       <h1 class=" my-4 text-6xl font-thin text-white">Hungry?</h1>
       <p class="leading-normal mb-4 text-2xl text-white ">I'm here to feed your tiny stomack!</p>
-      <button
-        class="bg-transparent hover:bg-sp-mn text-white  hover:text-white py-2 px-4 border border-sp-mn hover:border-transparent ">Restaurants</button>
+      <%= link_to 'Restaurants', restaurants_path, class: "bg-transparent hover:bg-sp-mn text-center w-full text-white  hover:text-white py-2 px-4 border border-sp-mn hover:border-transparent "%>
+      <%# <button
+        class="bg-transparent hover:bg-sp-mn text-white  hover:text-white py-2 px-4 border border-sp-mn hover:border-transparent ">Restaurants</button> %>
     </div>
     <%# <div class="w-full lg:w-1/2 lg:py-6"><%=image_tag 'landing.jpg', class: "w-full"%>
 

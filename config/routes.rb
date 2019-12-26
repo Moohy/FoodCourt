@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
   get 'restaurant/:city', to: 'restaurants#by_city', as: "by_city"
+  get 'orders/', to: 'orders#orders', as: "orders"
 
   # devise_for :admins, class_name: 'Admin', skip: [:sessions, :registrations]
   # devise_for :vendors, class_name: 'Vendor', skip: :sessions

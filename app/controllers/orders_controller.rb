@@ -2,11 +2,20 @@ class OrdersController < ApplicationController
     before_action :set_order, only: [:show, :edit, :update, :destroy]
 
     def index
-        @orders = Order.all
+        if can? :manage, Order
+            @orders = Order.all
+        else 
+            redirect_to root_path, alert: "No order belong to you!"
+        end
         # @menu_items = MenuItem.all
         # cities_arr = []
         # @orders.each {|r| puts r.branches.each { |b| puts cities_arr << b.city}}
         # @branches_by_cities = cities_arr.uniq!
+    end
+
+    def orders 
+        @orders = Order.where(user_id: current_user.id)
+        redirect_to(root_path, alert: "No order belong to you!") if @orders.nil?
     end
 
     def show
