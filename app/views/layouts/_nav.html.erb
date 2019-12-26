@@ -4,6 +4,7 @@
       Food Court
     </p>
     <ul class="text-sm text-white list-none p-0 flex items-center">
+        <li><%= link_to 'Home', root_path, class:"inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
         <li><%= link_to 'Restaurants', restaurants_path, class:"inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
         <%if !current_user%>
             <li class="pl-2 border-l"><%= link_to 'Log In', new_user_session_path, class:"inline-block py-2 px-3 text-white hover:text-gray-300 no-underline"%></li>
