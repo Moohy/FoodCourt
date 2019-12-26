@@ -16,7 +16,7 @@ class Ability
       if user.vendor?
         can [:read, :update], Restaurant,  user_id: user.id
         can :create, Restaurant if user.restaurant.nil?
-        can [:read, :update, :create], Branch, restaurant_id: user.restaurant.id
+        can [:read, :update, :create], Branch, restaurant: {user_id: user.id}
       end
       if user.customer?
         can :read, Restaurant
