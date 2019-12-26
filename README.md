@@ -1,24 +1,43 @@
-# README
+# Connect4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A two-player connection game in which the players first choose a color and then take turns dropping one colored disc from the top into grid.
 
-Things you may want to cover:
+#### The Live Version of This Code → [FoodCourt](https://moohy.github.io/Connect4/index.html)
 
-* Ruby version
+## Getting Started 🌟
 
-* System dependencies
+1. Login
+2. Browse Restaurants 
+3. Make an Order
 
-* Configuration
+### Prerequisites ❕
 
-* Database creation
+- Account
 
-* Database initialization
+## Deployment ⬆️
 
-* How to run the test suite
+Just upload the whole file into any hosting server with Postgres DB -> Bundle -> Migrate
 
-* Services (job queues, cache servers, search engines, etc.)
+## Built With ♥️
 
-* Deployment instructions
+- [Ruby on Rails] - Back-end & Front-end
+- [Postgres] - Database
+- [Javascript](https://www.javascript.com/) - Front-end
+- [jQuery](https://jquery.com) - Front-end
+- [TailwindCss] - Front-end
+- [Html]() - Front-end
+- [Css]() - Front-end
 
-* ...
+## Models
+![Models](/models.png)
+
+## Something Worth Looking in The Code ✨
+
+- Logic of Adding to Cart
+- Querying Cities that are related to the Order, Restaurant 
+
+## Ideas to Improve Project ⚡️
+
+- Easy to Use Interface
+
+## [Connect4](https://moohy.github.io/Connect4/index.html)
